@@ -1,20 +1,20 @@
 {
-  "name": "expo-ahap",
-  "version": "0.0.1",
-  "description": "",
+  "name": "expo-custom-haptics",
+  "version": "1.0.0",
+  "description": "React Native module for loading and interacting with Apple ahap files (Fork of expo-ahap)",
   "main": "index.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/evanbacon/expo-ahap.git",
-    "directory": "packages/expo-ahap"
+    "url": "https://github.com/FRAME-XYZ/expo-custom-haptics.git",
+    "directory": "packages/expo-custom-haptics"
   },
   "bugs": {
-    "url": "https://github.com/evanbacon/expo-ahap/issues"
+    "url": "https://github.com/FRAME-XYZ/expo-custom-haptics/issues"
   },
-  "author": "Evan Bacon",
+  "author": "FRAME-XYZ",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["expo", "react", "apple"],
+  "keywords": ["expo", "react", "apple", "haptics", "ahap"],
   "license": "ISC"
 }

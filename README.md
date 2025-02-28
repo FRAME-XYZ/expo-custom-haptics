@@ -1,44 +1,54 @@
-# expo-ahap
+# 🎮 expo-custom-haptics
 
-React Native module for loading and interacting with Apple ahap files
+A powerful React Native module for creating rich, customizable haptic experiences with Apple AHAP files. Originally forked from [expo-ahap](https://github.com/EvanBacon/expo-ahap), now maintained and maintained by the [Equals](https://equa.ls) team.
 
-- Implements the Apple API for building custom haptics. Learn more: [WWDC 2021](https://developer.apple.com/videos/play/wwdc2021/10278).
-- You can create ahap files online: [Here](https://ahap.fancypixel.it/).
+## ✨ Features
 
-> This library is not an official part of the Expo SDK!
+- Full implementation of Apple's Haptic Pattern API
+- Support for complex haptic patterns and sequences
+- Over-the-air (OTA) audio file integration
+- iOS 13+ compatibility
+- TypeScript support
 
-You can install (at your own discretion) with:
+## 🛠 Installation
 
 ```sh
-yarn add expo-ahap
+npm install expo-custom-haptics
+# or
+yarn add expo-custom-haptics
 ```
 
-Be sure to build on a physical iOS device, running iOS 13 or greater! `npx expo run:ios -d`
+> ⚠️ Important: This module requires a physical iOS device running iOS 13 or greater.
+> Run with: `npx expo run:ios -d`
 
-## API
+## 🎯 Quick Start
 
 ```js
-import { Player } from "expo-ahap";
+import { Player } from "expo-custom-haptics";
 
 const player = new Player({
-  // Ahap file
+  // Your AHAP pattern
 });
 
 player.start();
 
-// Be sure to unregister later...
-
+// Don't forget to clean up!
 player.unregister();
 ```
 
-## Example
+## 🎨 Create Custom Patterns
 
-Running this and pressing "Start!" should feel like _bbbbrrrppp!_ in your hand.
+Design your own haptic patterns:
+- Use the [AHAP Designer](https://ahap.fancypixel.it/) for visual pattern creation
+- Learn more about haptic design at [WWDC 2021](https://developer.apple.com/videos/play/wwdc2021/10278)
+
+## 📱 Example
+
+Here's a sample that creates a satisfying "brrrp!" sensation:
 
 ```js
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
-import { Player } from "expo-ahap";
+import { Player } from "expo-custom-haptics";
 
 const player = new Player({
   Pattern: [
@@ -91,25 +101,17 @@ const player = new Player({
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text onPress={() => player.start()}>Start!</Text>
-      <StatusBar style="auto" />
+      <Text onPress={() => player.start()}>Feel the magic! ✨</Text>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
 ```
 
-## Audio
+## 🎵 Audio Integration
 
-Audio files can be used OTA, so long as you copy the audio into the iOS Documents Directory, this can be done with `expo-file-system`:
+Integrate audio files with two methods:
+
+### 1. OTA Audio Loading
 
 ```ts
 import React from "react";
@@ -136,15 +138,23 @@ function useAudioInDocumentsDir(res) {
 
   return audioName;
 }
-
-// Later...
-
-const audioName = useAudioInDocumentsDir(require("./path/to/audio.wav"));
 ```
 
-Alternatively, you can use the [link-assets config plugin](https://github.com/evanbacon/link-assets#readme) to copy audio directly into the binary. Both generally have the same performance.
+### 2. Binary Asset Loading
+Use the [link-assets config plugin](https://github.com/evanbacon/link-assets#readme) to bundle audio directly in your app binary.
 
+## 💪 Support
 
-The types were converted as best-effort from the resources I could find, tested a number of methods and most things seem to work. If you find any issues, please open a PR!
+Maintained with ❤️ by the [Equals](https://equa.ls) team. If you encounter any issues or have feature requests, please open an issue on our [GitHub repository](https://github.com/FRAME-XYZ/expo-custom-haptics).
+
+## 📄 License
+
+ISC License
+
+---
+
+<p align="center">
+  Powered by <a href="https://equa.ls">Equals</a> | Making mobile experiences more immersive
+</p>
 
 

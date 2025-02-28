@@ -1,14 +1,13 @@
-import {
-  NativeModulesProxy,
-  EventEmitter,
-  Subscription,
-} from "expo-modules-core";
+import { NativeModulesProxy, EventEmitter } from "expo-modules-core";
 
 // Import the native module. On web, it will be resolved to Ahap.web.ts
 // and on native platforms to Ahap.ts
 import AhapModule from "./src/AhapModule";
 import { ChangeEventPayload } from "./src/Ahap.types";
 
+type Subscription = {
+  remove: () => void;
+};
 /**
  * Parameters used to modify individual haptic and/or audio events.
  *
@@ -321,10 +320,10 @@ export class Player {
   }
 }
 
-const emitter = new EventEmitter(AhapModule ?? NativeModulesProxy.Ahap);
+const emitter = new EventEmitter<{ finished: (event: ChangeEventPayload) => void }>(AhapModule ?? NativeModulesProxy.Ahap);
 
 function addChangeListener(
   listener: (event: ChangeEventPayload) => void
 ): Subscription {
-  return emitter.addListener<ChangeEventPayload>("finished", listener);
+  return emitter.addListener("finished", listener);
 }
